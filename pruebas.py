@@ -96,6 +96,7 @@ last_yearODEPA = int(last_yearODEPA[1:5])
 # Saca los datos  (regiones, tipos producto)
 #______________________________________________________________________________________________________________________________
 regiones = [str(x.text) for x in soup.find(id="codRegion").find_all('option')]
+# regiones = ["Metropolitana"]
 tipos_producto = [str(x.text) for x in soup.find(id="codTipoProducto").find_all('option')]
 
 # carga el motor de navegador y link
@@ -174,7 +175,7 @@ for i in range((last_yearODEPA-last_yearBD)+1):
                     select.select_by_index(len(options) - 1)
 
                 select = Select(driver.find_element_by_name('params.codRegion'))
-                select.select_by_index(codRegion)
+                select.select_by_index(3)
                 select = Select(driver.find_element_by_name('params.codSector'))
                 select.select_by_index(codSector)
                 select_sectores = driver.find_element_by_name("params.codSector")
@@ -189,7 +190,7 @@ for i in range((last_yearODEPA-last_yearBD)+1):
                     sector = ""
 
                 select = Select(driver.find_element_by_name('params.codTipoProducto'))
-                select.select_by_index(codTipoProducto)
+                select.select_by_index(3)
 
                 select = Select(driver.find_element_by_name('params.codProducto'))
                 select.select_by_index(0)
@@ -253,6 +254,7 @@ for i in range((last_yearODEPA-last_yearBD)+1):
             # la función creada al principio del código y pasarle los datos como párametros de la función
             #___________________________________________________________________________________________________________________
             for tag in datatags:
+                #print(tag.string)
                 if tag.string is None:
                     i += 1
                     row += "0','"
@@ -274,6 +276,7 @@ for i in range((last_yearODEPA-last_yearBD)+1):
                     # sentencia insert sin commit
                     # print(query)
                     cursor.execute(query)
+                    cnx.commit()
                     row = "'"
                     i = 0
     anoSem += 1
