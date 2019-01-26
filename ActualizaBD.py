@@ -148,7 +148,8 @@ driver = webdriver.Chrome()
 print("Ingresando datos de:")
 # En este bloque se obtienen los datos desde la fecha declarada dependiendo del resultado de la comparación
 #______________________________________________________________________________________________________________________________
-for i in range((last_yearODEPA-last_yearBD)+1):
+for i in range(1):
+#for i in range((last_yearODEPA-last_yearBD)+1):
     for codRegion in range(len(regiones)):
         print()
         print("Region: " + regiones[codRegion])
