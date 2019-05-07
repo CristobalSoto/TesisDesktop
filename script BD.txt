@@ -1,0 +1,24 @@
+CREATE TABLE ODEPA_Precios (
+id int NOT NULL AUTO_INCREMENT,
+region varchar(30),
+semana int NOT NULL,
+fecha_inicio varchar(12) NOT NULL,
+fecha_termino varchar(12) NOT NULL,
+sector varchar(50),
+tipo_punto_monitoreo varchar(50),
+tipo_producto varchar(50) NOT NULL,
+producto varchar(50),
+variedad varchar(50),
+calidad varchar(50),
+unidad varchar(50),
+procedencia varchar(50),
+precio_mínimo int,
+precio_máximo int,
+precio_promedio int NOT NULL,
+PRIMARY KEY(id)
+);
+
+
+
+write.table(datos.b.200,file="datos.b.txt", row.names = FALSE)
+write.table(chain.b.200,file="chain.b.txt", row.names = FALSE)
